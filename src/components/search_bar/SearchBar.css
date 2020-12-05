@@ -1,0 +1,34 @@
+.SearchBar * {
+  box-sizing: border-box;
+  font-family: Calibri, "Gill Sans", "Gill Sans MT", "Trebuchet MS", sans-serif;
+}
+.SearchBar {
+  display: flex;
+  justify-content: space-between;
+  max-width: 50%;
+}
+
+.SearchBar input {
+  float: left;
+  width: 80%;
+  text-align: center;
+  background: #f1f1f1;
+  font-size: 17px;
+  border: 1px solid grey;
+}
+
+.SearchBar button {
+  float: left;
+  width: 20%;
+  padding: 10px;
+  background: #2196f3;
+  color: white;
+  font-size: 17px;
+  border: 1px solid grey;
+  border-left: none; /* Prevent double borders */
+  cursor: grabbing;
+}
+
+.SearchBar button:hover {
+  background: #0b7dda;
+}
