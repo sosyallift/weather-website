@@ -3,32 +3,32 @@
   font-family: Calibri, "Gill Sans", "Gill Sans MT", "Trebuchet MS", sans-serif;
 }
 .SearchBar {
-  display: flex;
-  justify-content: space-between;
-  max-width: 50%;
+  border-radius: 2rem;
 }
 
 .SearchBar input {
   float: left;
   width: 80%;
+  color: var(--g2);
+  padding: 10px;
   text-align: center;
-  background: #f1f1f1;
+  background: var(--b1);
   font-size: 17px;
-  border: 1px solid grey;
+  border: 1px solid var(--g1);
 }
 
 .SearchBar button {
   float: left;
   width: 20%;
   padding: 10px;
-  background: #2196f3;
+  background: var(--b3);
   color: white;
   font-size: 17px;
-  border: 1px solid grey;
+  border: 1px solid var(--g1);
   border-left: none; /* Prevent double borders */
-  cursor: grabbing;
+  cursor: pointer;
 }
 
 .SearchBar button:hover {
-  background: #0b7dda;
+  background: var(--b2);
 }

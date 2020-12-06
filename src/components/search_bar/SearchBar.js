@@ -1,31 +1,29 @@
 import React, { useState, useEffect } from "react";
-import getWeatherApiURL from "../../API";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faSearch } from "@fortawesome/free-solid-svg-icons";
 import "./SearchBar.css";
 
-const SearchBar = () => {
+const SearchBar = (props) => {
   //States
   const [input, setInput] = useState("");
-  const [location, setLocation] = useState("");
 
   //updates the input const
   const handleInputChange = (event) => {
     setInput(event.target.value);
   };
-  //sets the input to the location after the input has been submitted
-  const handleInputSubmit = (event) => {
-    setLocation(input);
-    setInput("");
-  };
+
   return (
-    <div>
-      <form className="SearchBar" onSubmit={handleInputSubmit}>
+    <div className="SearchBar">
+      <form onSubmit={props.submitHandler(input, setInput)}>
         <input
           type="text"
           value={input}
           placeholder="Please enter your location"
           onChange={handleInputChange}
         ></input>
-        <button type="submit">Get Weather</button>
+        <button type="submit">
+          <FontAwesomeIcon icon={faSearch} />
+        </button>
       </form>
     </div>
   );
