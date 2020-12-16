@@ -1,7 +1,7 @@
 import { useState } from "react";
 import "./App.css";
-import SearchBar from "./components/search_bar/SearchBar";
-import CurrentWeather from "./weather screens/CurrentWeather";
+import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
+import HomeScreen from "./components/screens/HomeScreen";
 
 const App = () => {
   //States
@@ -18,8 +18,7 @@ const App = () => {
 
   return (
     <div id="App">
-      <SearchBar submitHandler={handleLocationSearch} />
-      <CurrentWeather location={location} setLocation={setLocation} />
+      <HomeScreen submitHandler={handleLocationSearch} />
     </div>
   );
 };
