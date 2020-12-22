@@ -13,19 +13,17 @@ const SearchBar = (props) => {
   };
 
   return (
-    <div className="SearchBar">
-      <form onSubmit={props.submitHandler(input, setInput)}>
-        <input
-          type="text"
-          value={input}
-          placeholder="Please enter your location"
-          onChange={handleInputChange}
-        ></input>
-        <button type="submit">
-          <FontAwesomeIcon icon={faSearch} />
-        </button>
-      </form>
-    </div>
+    <form className="SearchBar" onSubmit={props.submitHandler(input, setInput)}>
+      <input
+        type="text"
+        value={input}
+        placeholder="Please enter your location"
+        onChange={handleInputChange}
+      ></input>
+      <button type="submit">
+        <FontAwesomeIcon className="icon" icon={faSearch} />
+      </button>
+    </form>
   );
 };
 

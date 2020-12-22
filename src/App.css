@@ -1,5 +1,16 @@
 .App {
+}
+.home {
+  height: 100vh;
   display: flex;
-  flex-direction: column;
+  justify-content: center;
   align-items: center;
+  transition: align-items 4s;
+}
+
+.home-SearchBar {
+  width: 50%;
+}
+.home-SearchBar:focus-within {
+  align-items: flex-start;
 }
