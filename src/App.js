@@ -1,27 +1,23 @@
-import { useState, useEffect } from "react";
+// import { useState, useEffect } from "react";
+import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 import "./App.css";
-import SearchBar from "./components/SearchBar";
+import Home from "./screens/Home";
+import Weather from "./screens/Weather";
 
 const App = () => {
-  //States
-  //location of -1 indicates no location yet
-  const [location, setLocation] = useState(-1);
-  const [hasSearched, setHasSearched] = useState(false);
-
-  //Event Handlers
-  //sets the input to the location after the input has been submitted
-  const handleLocationSearch = (input, setInput) => (event) => {
-    setLocation(input);
-    setInput("");
-    event.preventDefault();
-  };
-
   return (
-    <div className="home">
-      <div className="home-SearchBar">
-        <SearchBar submitHandler={handleLocationSearch} />
+    <Router forceRefresh={true}>
+      <div className="app">
+        <Switch>
+          <Route exact path="/">
+            <Home />
+          </Route>
+          <Route path="/weather/:location">
+            <Weather />
+          </Route>
+        </Switch>
       </div>
-    </div>
+    </Router>
   );
 };
 

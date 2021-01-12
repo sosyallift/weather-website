@@ -1,0 +1,58 @@
+* {
+  box-sizing: border-box;
+  font-family: Arial, Helvetica, sans-serif;
+}
+/* .SearchBar {
+  overflow: hidden;
+  display: flex;
+  transition: box-shadow 1s;
+  border-radius: 20px;
+} */
+.input {
+  width: 90%;
+  color: white;
+  padding: 10px 10px 10px 5%;
+  text-align: center;
+  background-image: linear-gradient(to right, #f83600 0%, #f9d423 100%);
+  /* background: black; */
+  font-size: 17px;
+  border-style: none;
+}
+.input::placeholder {
+  color: white;
+  font-size: 15px;
+}
+.button {
+  position: relative;
+  width: 10%;
+  /* padding: 10px; */
+  background: #f9d423;
+  font-size: 17px;
+  border-style: none;
+  cursor: pointer;
+  outline: none;
+  transition: color 0.6s;
+}
+.icon {
+  position: absolute;
+  color: white;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+/* .SearchBar:focus-within {
+  box-shadow: 0px 0px 25px 10px #f9d423;
+}
+.SearchBar ::placeholder {
+  font-size: 15px;
+  color: white;
+} */
+.input:focus {
+  outline-style: none;
+}
+.input:focus::placeholder {
+  color: transparent;
+}
+.icon:hover {
+  color: #f83600;
+}

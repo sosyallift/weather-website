@@ -1,16 +1,5 @@
+:root {
+  font-family: Arial, Helvetica, sans-serif;
+}
 .App {
-}
-.home {
-  height: 100vh;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  transition: align-items 4s;
-}
-
-.home-SearchBar {
-  width: 50%;
-}
-.home-SearchBar:focus-within {
-  align-items: flex-start;
 }
