@@ -3,6 +3,7 @@ export const getOpenWeatherURL = (city) => {
   return `api.openweathermap.org/data/2.5/weather?q=${city}&units=imperial&appid=${OpenWeatherKey}`;
 };
 const WeatherApiKey = "4a0f94cb989f49e194a225302200212";
-export const getWeatherApiURL = (location) => {
-  return `http://api.weatherapi.com/v1/current.json?key=${WeatherApiKey}&q=${location}`;
+export const getWeatherApiURL = (location, days) => {
+  // return `http://api.weatherapi.com/v1/current.json?key=${WeatherApiKey}&q=${location}`;
+  return `http://api.weatherapi.com/v1/forecast.json?key=${WeatherApiKey}&q=${location}&days=${days}`;
 };
