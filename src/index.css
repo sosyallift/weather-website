@@ -1,9 +1,9 @@
 :root {
-  --g1: #456d69;
-  --g2: #0f3632;
-  --b1: #79d0c8;
-  --b2: #38c7b9;
-  --b3: #299489;
+  --c1: #dde7ee;
+  --c2: #81a5ba;
+  --c3: #396b89;
+  --c4: #323456;
+  --c5: #202547;
 }
 
 body {
@@ -13,6 +13,5 @@ body {
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  height: 100vh;
-  background: linear-gradient(var(--b3), var(--b1));
+  background: linear-gradient(var(--c3), var(--c2));
 }

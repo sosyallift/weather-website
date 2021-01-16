@@ -7,53 +7,73 @@ import { getWeatherApiURL } from "../API";
 import "./Weather.css";
 //Components
 import SearchBar from "../components/SearchBar";
+import { CurrentWeather } from "../components/weather_components";
 
 const Weather = (props) => {
+  //States
+  //weather object from api
+  const [weather, setWeather] = useState(0);
+  //var for official Location name
+  const [officialLoc, setOfficialLoc] = useState("");
+  //var for storing the time that the weather was retrieved
+  const [timeUpdated, setTimeUpdated] = useState("");
+
   //location searched
   const { location } = useParams();
 
-  return (
-    <div className="weather">
-      <div className="weather-SearchBar">
-        <SearchBar />
-      </div>
-      {/* <div className="card current-card"> */}
-      <CurrentWeather location={location} />
-      {/* </div> */}
-    </div>
-  );
-};
-
-const CurrentWeather = (props) => {
-  //States
-  //weather object from api
-  const [weather, setWeather] = useState({});
-  //var for official Location name
-  const [officialLoc, setOfficialLoc] = useState("");
   //Fetches current weather data and assigns the json response to weather state and updates officialLoc on the 1st render
   useEffect(() => {
-    fetch(getWeatherApiURL(props.location))
-      .then((response) => response.json())
+    fetch(getWeatherApiURL(location, 3))
+      .then((response) => {
+        //TODO handle bad requests
+        if (!response.ok) {
+          throw Error(response.statusText);
+        }
+        return response.json();
+      })
       .then((json) => {
+        setWeather(json);
         setOfficialLoc(`${json.location.name}, ${json.location.region}`);
-        setWeather({ ...json.current });
+        //sets converts the date to the last updated time and updates the timeUpdated state
+        const time = new Date(json.current.last_updated);
+        let options = {
+          hour: "numeric",
+          minute: "numeric",
+          hour12: true,
+          timeZoneName: "short",
+        };
+        let timeString = time.toLocaleString("en-US", options);
+        setTimeUpdated(timeString);
       });
-  }, [props.location]);
-  return (
-    <div className="card current-card">
-      <div className="current-header">
-        <h2>{officialLoc} Weather</h2>
-        <h3>last updated </h3>
-      </div>
+  }, []);
 
-      <div className="current-info">
-        <ul>
-          <li> Temp {weather.temp_f} F° </li>
-          <li> Feels Like {weather.feelslike_f} F° </li>
-          <li> Wind {weather.wind_mph} mph </li>
-        </ul>
-      </div>
+  return (
+    <div className="weather">
+      <nav className="navbar">
+        <div className="weather-SearchBar">
+          <SearchBar props={props} />
+        </div>
+      </nav>
+      {weather !== 0 && (
+        <main>
+          <div>
+            <CurrentWeather
+              weather={weather}
+              officialLoc={officialLoc}
+              timeUpdated={timeUpdated}
+            />
+          </div>
+          {/* <div>
+            <ForcastWeather
+              weather={weather}
+              officialLoc={officialLoc}
+              timeUpdated={timeUpdated}
+            />
+          </div> */}
+        </main>
+      )}
     </div>
   );
 };
+
 export default Weather;

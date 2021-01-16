@@ -7,7 +7,7 @@ import Weather from "./screens/Weather";
 const App = () => {
   return (
     <Router forceRefresh={true}>
-      <div className="app">
+      <div className="App">
         <Switch>
           <Route exact path="/">
             <Home />

@@ -1,0 +1,51 @@
+/* Card Applied to different weather components */
+.card {
+  width: 50vw;
+  border-radius: 10px;
+  background-color: rgba(255, 255, 255, 0.075);
+  box-shadow: 0 0 3px 1px var(--c5);
+  /* margin: 1rem 0; */
+  padding: 1rem;
+}
+/*~~~~~~~~~ START OF CURRENT WEATHER COMPONENT STYLING ~~~~~~~~~*/
+.current-card {
+  position: relative;
+  width: 45vw;
+  min-width: fit-content;
+  padding: 1rem;
+  background: linear-gradient(var(--c5), var(--c4));
+}
+.current-header {
+  padding: 0.5rem;
+}
+.current-header h2 {
+  margin-bottom: 0.4rem;
+}
+.current-info {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin: 0.5rem 0;
+}
+/* Styles for just the main weather info  */
+.main-info {
+  display: flex;
+  align-items: center;
+}
+.temp-info {
+  font-size: 5rem;
+}
+.other-info {
+  margin-left: 1rem;
+}
+
+.current-condition {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+.current-condition img {
+  min-height: 7rem;
+}
+/*~~~~~~~~~ END OF CURRENT WEATHER COMPONENT STYLING ~~~~~~~~~*/
