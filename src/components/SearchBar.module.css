@@ -4,23 +4,24 @@
 }
 .input {
   width: 90%;
+  /* color: var(--c5); */
   color: white;
   padding: 10px 10px 10px 5%;
   text-align: center;
-  /* background-image: linear-gradient(to right, #f83600 0%, #f9d423 100%); */
-  background-image: linear-gradient(to right, var(--c2) 0%, var(--c1) 100%);
+  background-image: linear-gradient(to left, #f4442e 0%, #fc9e4f 100%);
+  box-shadow: 0 0 3px 1px var(--c5);
   border-style: none;
   font-size: 1rem;
 }
 .input::placeholder {
   color: white;
+  /* color: var(--c5); */
   font-size: 15px;
 }
 .button {
   position: relative;
   width: 10%;
-  /* background: #f9d423; */
-  background: var(--c1);
+  background: #f4442e;
   font-size: 17px;
   border-style: none;
   cursor: pointer;
@@ -28,7 +29,6 @@
 }
 .icon {
   position: absolute;
-  color: var(--c5);
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);

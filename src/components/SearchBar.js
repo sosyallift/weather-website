@@ -20,6 +20,7 @@ const SearchBar = (props) => {
   //redirects to correct weather page on enter press
   const onEnterPress = (e) => {
     if (e.key === "Enter") {
+      setInput("");
       history.push(`/weather/${input}`);
     }
   };
@@ -35,7 +36,7 @@ const SearchBar = (props) => {
         onKeyPress={onEnterPress}
       ></input>
       <Link className={styles.button} to={`/weather/${input}`}>
-        <FontAwesomeIcon className={styles.icon} icon={faSearch} />
+        <FontAwesomeIcon icon={faSearch} className={styles.icon} />
       </Link>
     </>
   );

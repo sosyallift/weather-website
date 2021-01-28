@@ -1,6 +1,5 @@
 /* Card Applied to different weather components */
 .card {
-  width: 50vw;
   border-radius: 10px;
   background-color: rgba(255, 255, 255, 0.075);
   box-shadow: 0 0 3px 1px var(--c5);
@@ -10,9 +9,7 @@
 /*~~~~~~~~~ START OF CURRENT WEATHER COMPONENT STYLING ~~~~~~~~~*/
 .current-card {
   position: relative;
-  width: 45vw;
   min-width: fit-content;
-  padding: 1rem;
   background: linear-gradient(var(--c5), var(--c4));
 }
 .current-header {
@@ -22,30 +19,104 @@
   margin-bottom: 0.4rem;
 }
 .current-info {
-  display: flex;
-  justify-content: space-between;
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  grid-template-rows: 1fr;
   align-items: center;
   margin: 0.5rem 0;
+  grid-gap: 0.5rem 0;
 }
 /* Styles for just the main weather info  */
 .main-info {
-  display: flex;
-  align-items: center;
+  justify-self: end;
 }
 .temp-info {
   font-size: 5rem;
 }
 .other-info {
-  margin-left: 1rem;
+  justify-self: center;
 }
-
 .current-condition {
   display: flex;
-  flex-direction: column;
   justify-content: center;
   align-items: center;
+  justify-self: start;
 }
 .current-condition img {
-  min-height: 7rem;
+  height: 5rem;
 }
 /*~~~~~~~~~ END OF CURRENT WEATHER COMPONENT STYLING ~~~~~~~~~*/
+/*~~~~~~~~~ START OF FORECAST WEATHER COMPONENT STYLING ~~~~~~~~~*/
+.forecast-card {
+  position: relative;
+  min-width: fit-content;
+  padding: 1rem;
+  background: linear-gradient(var(--c5), var(--c4));
+}
+.forecast-header {
+  padding: 0.5rem;
+  text-align: center;
+  margin-bottom: 0.4rem;
+}
+.forecast-header * {
+  display: inline;
+}
+.forecast-info {
+  margin: 0.5rem 1rem;
+}
+.forecast-info ul {
+  list-style-type: none;
+}
+.forecast-day {
+  display: grid;
+  grid-template-columns: 1.5fr 1.5fr 0.5fr 2fr 1fr;
+  grid-template-rows: 1fr;
+  align-items: center;
+  font-size: 1.2rem;
+  margin: 2rem 0;
+  padding-bottom: 0.75rem;
+  border-bottom: 1px solid white;
+}
+.forecast-day p {
+  display: inline-block;
+}
+.forecast-day :hover {
+  cursor: pointer;
+}
+.forecast-highlow {
+  margin-left: -2rem;
+}
+.forecast-condition {
+  margin-left: -2rem;
+}
+.forecast-icon {
+  display: inline-block;
+  max-height: 2rem;
+}
+.forecast-rain p {
+  margin-left: 0.75rem;
+}
+/*~~~~~~~~~ END OF FORECAST WEATHER COMPONENT STYLING ~~~~~~~~~*/
+@media (max-width: 400px) {
+  .current-info {
+    margin-right: 1rem;
+    justify-self: center;
+  }
+  .temp-info {
+    font-size: 3rem;
+    justify-self: center;
+  }
+  .current-condition {
+    flex-direction: column;
+  }
+  .current-condition img {
+    height: 3rem;
+  }
+  /*  */
+  .forecast-day p {
+    font-size: smaller;
+  }
+  .forecast-highlow {
+    margin-left: 0;
+  }
+}

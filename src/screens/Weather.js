@@ -1,29 +1,33 @@
 //React
 import { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
-//API
+//API functions
 import { getWeatherApiURL } from "../API";
 //CSS
 import "./Weather.css";
 //Components
 import SearchBar from "../components/SearchBar";
-import { CurrentWeather } from "../components/weather_components";
+import {
+  CurrentWeather,
+  ForecastWeather,
+} from "../components/weather_components";
 
 const Weather = (props) => {
-  //States
+  //States/variables
   //weather object from api
-  const [weather, setWeather] = useState(0);
-  //var for official Location name
+  const [weather, setWeather] = useState(false);
+  //state for official Location name
   const [officialLoc, setOfficialLoc] = useState("");
-  //var for storing the time that the weather was retrieved
+  //state for storing the time that the weather was retrieved
   const [timeUpdated, setTimeUpdated] = useState("");
-
   //location searched
   const { location } = useParams();
+  //Number of days for the forecast
+  const numDays = 3;
 
   //Fetches current weather data and assigns the json response to weather state and updates officialLoc on the 1st render
   useEffect(() => {
-    fetch(getWeatherApiURL(location, 3))
+    fetch(getWeatherApiURL(location, numDays))
       .then((response) => {
         //TODO handle bad requests
         if (!response.ok) {
@@ -45,7 +49,7 @@ const Weather = (props) => {
         let timeString = time.toLocaleString("en-US", options);
         setTimeUpdated(timeString);
       });
-  }, []);
+  }, [location, numDays]);
 
   return (
     <div className="weather">
@@ -54,22 +58,24 @@ const Weather = (props) => {
           <SearchBar props={props} />
         </div>
       </nav>
-      {weather !== 0 && (
-        <main>
-          <div>
+      {/* only renders once weather has been fetched */}
+      {weather && (
+        <main className="content">
+          <div className="currentWeather">
             <CurrentWeather
               weather={weather}
               officialLoc={officialLoc}
               timeUpdated={timeUpdated}
             />
           </div>
-          {/* <div>
-            <ForcastWeather
+          <div className="forecastWeather">
+            <ForecastWeather
               weather={weather}
               officialLoc={officialLoc}
               timeUpdated={timeUpdated}
+              numDays={numDays}
             />
-          </div> */}
+          </div>
         </main>
       )}
     </div>
