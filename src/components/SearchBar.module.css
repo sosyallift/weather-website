@@ -2,13 +2,19 @@
   box-sizing: border-box;
   font-family: Arial, Helvetica, sans-serif;
 }
+:root {
+  /* --dark: #d65108; */
+  --dark: #fe7f2d;
+  --light: #fcca46;
+}
 .input {
-  width: 90%;
-  /* color: var(--c5); */
+  width: 80%;
   color: white;
-  padding: 10px 10px 10px 5%;
+  /* padding: 10px 10px 10px 5%; */
   text-align: center;
-  background-image: linear-gradient(to left, #f4442e 0%, #fc9e4f 100%);
+  /* background-image: linear-gradient(to left, #f4442e 0%, #fc9e4f 100%); */
+  /* background-color: #fc864f; */
+  background-color: var(--dark);
   box-shadow: 0 0 3px 1px var(--c5);
   border-style: none;
   font-size: 1rem;
@@ -18,10 +24,19 @@
   /* color: var(--c5); */
   font-size: 15px;
 }
-.button {
+.button1 {
   position: relative;
   width: 10%;
-  background: #f4442e;
+  background: var(--dark);
+  font-size: 17px;
+  border-style: none;
+  cursor: pointer;
+  outline: none;
+}
+.button2 {
+  position: relative;
+  width: 10%;
+  background: var(--light);
   font-size: 17px;
   border-style: none;
   cursor: pointer;

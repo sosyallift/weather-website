@@ -1,18 +1,13 @@
 //React
 import { useState, useEffect } from "react";
-import { useParams } from "react-router-dom";
 //API functions
 import { getWeatherApiURL } from "../API";
 //CSS
 import "./Weather.css";
 //Components
-import SearchBar from "../components/SearchBar";
-import {
-  CurrentWeather,
-  ForecastWeather,
-} from "../components/weather_components";
+import { CurrentWeather, ForecastWeather } from "./weather_components";
 
-const Weather = (props) => {
+const Weather = ({ location }) => {
   //States/variables
   //weather object from api
   const [weather, setWeather] = useState(false);
@@ -20,13 +15,14 @@ const Weather = (props) => {
   const [officialLoc, setOfficialLoc] = useState("");
   //state for storing the time that the weather was retrieved
   const [timeUpdated, setTimeUpdated] = useState("");
-  //location searched
-  const { location } = useParams();
   //Number of days for the forecast
   const numDays = 3;
 
   //Fetches current weather data and assigns the json response to weather state and updates officialLoc on the 1st render
   useEffect(() => {
+    if (location === "") {
+      return;
+    }
     fetch(getWeatherApiURL(location, numDays))
       .then((response) => {
         //TODO handle bad requests
@@ -53,11 +49,6 @@ const Weather = (props) => {
 
   return (
     <div className="weather">
-      <nav className="navbar">
-        <div className="weather-SearchBar">
-          <SearchBar props={props} />
-        </div>
-      </nav>
       {/* only renders once weather has been fetched */}
       {weather && (
         <main className="content">

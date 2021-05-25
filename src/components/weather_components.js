@@ -1,6 +1,6 @@
-//React
-import { useState, useEffect } from "react";
-//icon
+import { useState } from "react";
+import { Transition } from "react-transition-group";
+//icons
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faUmbrella } from "@fortawesome/free-solid-svg-icons";
 //CSS

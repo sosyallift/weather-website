@@ -1,2 +1,52 @@
-.App {
+.app {
+  height: 100%;
+  background: linear-gradient(var(--c3), var(--c2));
 }
+
+/* Search Bar Styling */
+.navbar {
+  z-index: 1;
+  position: fixed;
+  top: 40vh;
+  height: 10vh;
+  min-height: 4rem;
+  width: 100vw;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  transition: 800ms;
+}
+.navbar-transition {
+  top: 0;
+}
+.searchbar {
+  overflow: hidden;
+  display: flex;
+  width: 40%;
+  height: 50%;
+  border-radius: 20px;
+  opacity: 80%;
+  transition: 800ms;
+}
+.searchbar-transition {
+  width: 50%;
+}
+/* End of Search Bar Styling */
+/* Start weather-transition */
+.weather-transition {
+  transition: opacity 900ms;
+  opacity: 0;
+}
+.weather-transition-entering {
+  opacity: 0;
+}
+.weather-transition-entered {
+  opacity: 1;
+}
+.weather-transition-exiting {
+  opacity: 1;
+}
+.weather-transition-exited {
+  opacity: 0;
+}
+/* End weather-transition */

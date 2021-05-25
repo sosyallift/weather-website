@@ -1,22 +1,33 @@
-import { useState, useEffect } from "react";
-import { Route, Switch } from "react-router-dom";
+import { useState } from "react";
+import { Transition } from "react-transition-group";
+
 import "./App.css";
-import Home from "./screens/Home";
-import Weather from "./screens/Weather";
+import Weather from "./components/Weather";
+import SearchBar from "./components/SearchBar";
 
 const App = () => {
+  const [location, setLocation] = useState("");
   const [hasSearched, setHasSearched] = useState(false);
 
   return (
-    <div className="App">
-      <Switch>
-        <Route exact path="/">
-          <Home />
-        </Route>
-        <Route path="/weather/:location">
-          <Weather />
-        </Route>
-      </Switch>
+    <div className="app">
+      <nav className={`navbar ${hasSearched ? "navbar-transition" : ""}`}>
+        <div
+          className={`searchbar ${hasSearched ? "searchbar-transition" : ""}`}
+        >
+          <SearchBar
+            setHasSearched={setHasSearched}
+            setLocation={setLocation}
+          />
+        </div>
+      </nav>
+      <Transition in={hasSearched} timeout={900}>
+        {(state) => (
+          <div className={`weather-transition weather-transition-${state}`}>
+            {hasSearched && <Weather location={location} />}
+          </div>
+        )}
+      </Transition>
     </div>
   );
 };
