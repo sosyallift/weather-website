@@ -11,6 +11,8 @@ const Weather = ({ location }) => {
   //States/variables
   //weather object from api
   const [weather, setWeather] = useState(false);
+  //state for weather the searched location exists
+  const [locExists, setLocExists] = useState(true);
   //state for official Location name
   const [officialLoc, setOfficialLoc] = useState("");
   //state for storing the time that the weather was retrieved
@@ -25,13 +27,15 @@ const Weather = ({ location }) => {
     }
     fetch(getWeatherApiURL(location, numDays))
       .then((response) => {
-        //TODO handle bad requests
         if (!response.ok) {
-          throw Error(response.statusText);
+          setLocExists(false);
+          setWeather(false);
+          throw new Error("Location searched is not found");
         }
         return response.json();
       })
       .then((json) => {
+        setLocExists(true);
         setWeather(json);
         setOfficialLoc(`${json.location.name}, ${json.location.region}`);
         //sets converts the date to the last updated time and updates the timeUpdated state
@@ -44,33 +48,38 @@ const Weather = ({ location }) => {
         };
         let timeString = time.toLocaleString("en-US", options);
         setTimeUpdated(timeString);
-      });
+      })
+      .catch((error) => console.log(error));
   }, [location, numDays]);
 
-  return (
-    <div className="weather">
-      {/* only renders once weather has been fetched */}
-      {weather && (
-        <main className="content">
-          <div className="currentWeather">
-            <CurrentWeather
-              weather={weather}
-              officialLoc={officialLoc}
-              timeUpdated={timeUpdated}
-            />
-          </div>
-          <div className="forecastWeather">
-            <ForecastWeather
-              weather={weather}
-              officialLoc={officialLoc}
-              timeUpdated={timeUpdated}
-              numDays={numDays}
-            />
-          </div>
-        </main>
-      )}
-    </div>
-  );
+  if (locExists) {
+    return (
+      <div className="weather">
+        {/* only renders once weather has been fetched */}
+        {weather && (
+          <main className="content">
+            <div className="currentWeather">
+              <CurrentWeather
+                weather={weather}
+                officialLoc={officialLoc}
+                timeUpdated={timeUpdated}
+              />
+            </div>
+            <div className="forecastWeather">
+              <ForecastWeather
+                weather={weather}
+                officialLoc={officialLoc}
+                timeUpdated={timeUpdated}
+                numDays={numDays}
+              />
+            </div>
+          </main>
+        )}
+      </div>
+    );
+  } else {
+    return <div className="error"> Location Not Found :( </div>;
+  }
 };
 
 export default Weather;
