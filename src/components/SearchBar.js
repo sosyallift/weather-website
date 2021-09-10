@@ -46,7 +46,7 @@ const SearchBar = ({ setLocation, setHasSearched }) => {
         type="text"
         value={input}
         ref={inputRef}
-        placeholder="Please enter your location"
+        placeholder="City, State/State Code, Country"
         onChange={handleInputChange}
         onKeyPress={onEnterPress}
       ></input>
