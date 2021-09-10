@@ -1,5 +1,4 @@
 import { useState } from "react";
-import { Transition } from "react-transition-group";
 //icons
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faUmbrella } from "@fortawesome/free-solid-svg-icons";
@@ -40,7 +39,7 @@ export const CurrentWeather = ({ weather, officialLoc, timeUpdated }) => {
 export const ForecastWeather = ({ weather, officialLoc, numDays }) => {
   //forecast = [{day1}, {day2}, ...]
   const [forecast, setForecast] = useState(weather.forecast.forecastday);
-
+  
   // TODO
   // const handleDayClick = (e) => {
   //   setDayPicked(e.target.getAttribute("key"));
